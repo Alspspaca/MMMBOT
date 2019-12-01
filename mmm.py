@@ -12,7 +12,7 @@ async def on_ready():
     print("봇이름 : " + bname)
     print("MMMBot STAR")
     game = discord.Game("테스트중")
-    await client.change_presence(status=discord.Status.online, activity=game) #빨간불,노란불,초록불=offline,idle,online
+    await client.change_presence(status=discord.Status.idle, activity=game) #빨간불,노란불,초록불=offline,idle,online
 
 
 @client.event
