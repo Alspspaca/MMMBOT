@@ -1,3 +1,2 @@
 discord.py==1.2.5
-BeautifulSoup.py==4.8.1
 openpyxl.py==3.0.2
