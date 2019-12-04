@@ -1,4 +1,4 @@
 discord.py==1.2.5
-requests.py==3.0.4
+requests.py==1.25.7
 BeautifulSoup.py==4.8.1
 openpyxl.py==3.0.2
