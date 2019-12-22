@@ -161,7 +161,7 @@ async def on_message(message):
         plagtime=['12:0:0', '19:0:0', '21:0:0']
         plest=['12', '7', '10']
         count=0
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(timezone('UTC')).astimezone(timezone('Asia/Seoul'))
         embed = discord.Embed(color=0xFF5E00, title="플래그 남은시간")
         for i in plagtime:
             imtime = datetime.datetime.strptime(i, '%H:%M:%S')
