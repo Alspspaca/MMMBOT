@@ -3,6 +3,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 import openpyxl
+import datetime
 
 client = discord.Client()
 
