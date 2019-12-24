@@ -159,7 +159,7 @@ async def on_message(message):
 
     if message.content.startswith("!플래그"):
         plagtime=['12:0:0', '19:0:0', '21:0:0']
-        plest=['12', '7', '10']
+        plest=['12', '7', '9']
         count=0
         now = datetime.datetime.now()
         embed = discord.Embed(color=0xFF5E00, title="플래그 남은시간")
