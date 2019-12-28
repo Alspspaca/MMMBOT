@@ -107,9 +107,10 @@ async def on_message(message):
             embed.add_field(name="월드랭킹", value=str(imf[2].text).replace(' ', '').replace('\n', '').split("월드랭킹")[1], inline=True)
             embed.add_field(name="직업랭킹(월드)", value=str(imf[3].text).replace(' ', '').replace('\n', '').split("직업랭킹(월드)")[1], inline=True)
             embed.add_field(name="직업랭킹(전체)", value=str(imf[4].text).replace(' ', '').replace('\n', '').split("직업랭킹(전체)")[1], inline=True)
+            await message.channel.send(embed=embed)
         except:
-            await message.channel.send("캐릭터 정보를 찾을수 없습니다.")
-        await message.channel.send(embed=embed)
+            errorembed = discord.Embed(color=0xFF5E00, title="캐릭터 정보를 찾을수 없습니다.")
+            await message.channel.send(embed=errorembed)
 
     if message.content.startswith("!코디분석"):
         request = requests.get('https://maple.gg/u/' + message.content.split(" ")[1])
