@@ -213,8 +213,8 @@ async def on_message(message):
         html = request.text
         soup = BeautifulSoup(html, 'html.parser')
         imf = soup.select('#app > section:nth-child(6) > div > div.col-lg-8.col-xl-9 > section > div > div')
-        count=0
         await message.channel.send("test")
+        count=0
         embed = discord.Embed(color=0xFF5E00, title="경뿌 검색기")
         await message.channel.send(embed=embed)
         for i in imf:
