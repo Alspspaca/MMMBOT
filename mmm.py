@@ -109,7 +109,7 @@ async def on_message(message):
             embed.add_field(name="직업랭킹(전체)", value=str(imf[4].text).replace(' ', '').replace('\n', '').split("직업랭킹(전체)")[1], inline=True)
             await message.channel.send(embed=embed)
         except:
-            errorembed = discord.Embed(color=0xFF5E00, title=":warning:캐릭터 정보를 찾을수 없습니다.")
+            errorembed = discord.Embed(color=0xFF5E00, title="캐릭터 정보를 찾을수 없습니다.")
             await message.channel.send(embed=errorembed)
 
     if message.content.startswith("!코디분석"):
@@ -130,7 +130,7 @@ async def on_message(message):
             embed.set_thumbnail(url=image.split("src=\"")[1].split("\" style")[0])
             await message.channel.send(embed=embed)
         except:
-            errorembed = discord.Embed(color=0xFF5E00, title=":warning:캐릭터 정보를 찾을수 없습니다.")
+            errorembed = discord.Embed(color=0xFF5E00, title="캐릭터 정보를 찾을수 없습니다.")
             await message.channel.send(embed=errorembed)      
             
 
