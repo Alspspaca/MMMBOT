@@ -207,16 +207,6 @@ async def on_message(message):
 
         except:
             await message.channel.send("도움말")"""
-
-    if message.content.startswith("!도움말"):
-        author = message.guild.get_member(int(message.author.id))
-        embed = discord.Embed(color=0xFF5E00, title="명령어 안내")
-        embed.add_field(name="캐릭터 정보", value="!정보 [닉네임] - 캐릭터 정보를 가져와 출력한다.\n!코디분석 [닉네임] - 캐릭터의 코디 상태를 출력한다.\n", inline=False)
-        embed.add_field(name="유용한 명령어", value="!플래그 - 플래그 까지 남은시간을 출력한다.\n!한강 - 한강물 온도를 출력한다.\n!경뿌 - 크로아 서버의 경뿌를 탐색해 출력한다.\n", inline=False)
-        embed.add_field(name="길드 관련(미완)", value="!길드 - 길드 도움말을 출력한다.\n!길드 정보 - 길드 정보를 출력한다.\n", inline=False)
-        embed.add_field(name="이벤트", value="!로얄픽 - 뷰티어워즈 정보를 가져와 출력한다.\n", inline=False)
-        await author.send(embed=embed)
-   
     if message.content.startswith("!경뿌"):
         request = requests.get('https://maple.gg/megaphone/croa')
         html = request.text
@@ -234,7 +224,17 @@ async def on_message(message):
             egb = discord.Embed(color=0xFF5E00, title="경뿌를 찾지 못했습니다.")
             await message.channel.send(embed=egb)
         else:
-            await message.channel.send(embed=embed)        
+            await message.channel.send(embed=embed)     
+    
+    if message.content.startswith("!도움말"):
+        author = message.guild.get_member(int(message.author.id))
+        embed = discord.Embed(color=0xFF5E00, title="명령어 안내")
+        embed.add_field(name="캐릭터 정보", value="!정보 [닉네임] - 캐릭터 정보를 가져와 출력한다.\n!코디분석 [닉네임] - 캐릭터의 코디 상태를 출력한다.\n", inline=False)
+        embed.add_field(name="유용한 명령어", value="!플래그 - 플래그 까지 남은시간을 출력한다.\n!한강 - 한강물 온도를 출력한다.\n!경뿌 - 크로아 서버의 경뿌를 탐색해 출력한다.\n", inline=False)
+        embed.add_field(name="길드 관련(미완)", value="!길드 - 길드 도움말을 출력한다.\n!길드 정보 - 길드 정보를 출력한다.\n", inline=False)
+        embed.add_field(name="이벤트", value="!로얄픽 - 뷰티어워즈 정보를 가져와 출력한다.\n", inline=False)
+        await author.send(embed=embed)
+      
 
 acces_token = os.environ["BOT_TOKEN"]
 client.run(acces_token)
