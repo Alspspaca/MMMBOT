@@ -216,9 +216,17 @@ async def on_message(message):
         count=0
         embed = discord.Embed(color=0xFF5E00, title="경뿌 검색기")
         for i in imf:
-            text = i.text.replace('\n', '').replace(' ', '')
+            text = i.text.replace('\n', '')
             if "경뿌" in text:
-                embed.add_field(name="Result :", value=text, inline=False)
+                month=text.split('-')[0]+"-"
+                day=text.split('-')[1].split(' ')[0]
+                time=text.split('-')[1].split(' ')[1]
+                result=month+day+time
+                result2=text.replace(' ', '')
+                month2=text.split('-')[0]+"월"
+                day2=text.split('-')[1].split(' ')[0]+"일"
+                mes=result2.split(result)[1]
+                embed.add_field(name=month2+day2+time, value=mes, inline=False)
                 count=1
         if count == 0:
             egb = discord.Embed(color=0xFF5E00, title="경뿌를 찾지 못했습니다.")
