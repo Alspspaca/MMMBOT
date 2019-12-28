@@ -109,7 +109,7 @@ async def on_message(message):
             embed.add_field(name="직업랭킹(전체)", value=str(imf[4].text).replace(' ', '').replace('\n', '').split("직업랭킹(전체)")[1], inline=True)
             await message.channel.send(embed=embed)
         except:
-            errorembed = discord.Embed(color=0xFF5E00, title="캐릭터 정보를 찾을수 없습니다.")
+            errorembed = discord.Embed(color=0xFF5E00, title=":warning:캐릭터 정보를 찾을수 없습니다.")
             await message.channel.send(embed=errorembed)
 
     if message.content.startswith("!코디분석"):
@@ -118,16 +118,21 @@ async def on_message(message):
         soup = BeautifulSoup(html, 'html.parser')
         links = str(soup.select('#user-profile > section > div > div.col-lg-4.pt-1.pt-sm-0.pb-1.pb-sm-0.text-center.mt-2.mt-lg-0 > div > div.col-6.col-md-4.col-lg-6 > div > div.character-coord__items'))
         image = str(soup.select('#user-profile > section > div > div.col-lg-4.pt-1.pt-sm-0.pb-1.pb-sm-0.text-center.mt-2.mt-lg-0 > div > div.col-6.col-md-8.col-lg-6 > img'))
-        embed = discord.Embed(color=0xFF5E00, title=message.content.split(" ")[1])
-        embed.add_field(name="머리", value=links.split("<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.add_field(name="헤어", value=links.split("<span class=\"character-coord__item-type\">헤어</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.add_field(name="성형", value=links.split("<span class=\"character-coord__item-type\">성형</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.add_field(name="상의", value=links.split("<span class=\"character-coord__item-type\">상의</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.add_field(name="하의", value=links.split("<span class=\"character-coord__item-type\">하의</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.add_field(name="신발", value=links.split("<span class=\"character-coord__item-type\">신발</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.add_field(name="무기", value=links.split("<span class=\"character-coord__item-type\">무기</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
-        embed.set_thumbnail(url=image.split("src=\"")[1].split("\" style")[0])
-        await message.channel.send(embed=embed)
+        try:
+            embed = discord.Embed(color=0xFF5E00, title=message.content.split(" ")[1])
+            embed.add_field(name="머리", value=links.split("<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.add_field(name="헤어", value=links.split("<span class=\"character-coord__item-type\">헤어</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.add_field(name="성형", value=links.split("<span class=\"character-coord__item-type\">성형</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.add_field(name="상의", value=links.split("<span class=\"character-coord__item-type\">상의</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.add_field(name="하의", value=links.split("<span class=\"character-coord__item-type\">하의</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.add_field(name="신발", value=links.split("<span class=\"character-coord__item-type\">신발</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.add_field(name="무기", value=links.split("<span class=\"character-coord__item-type\">무기</span>\n<span class=\"character-coord__item-name\">")[1].split("</span>")[0], inline=True)
+            embed.set_thumbnail(url=image.split("src=\"")[1].split("\" style")[0])
+            await message.channel.send(embed=embed)
+        except:
+            errorembed = discord.Embed(color=0xFF5E00, title=":warning:캐릭터 정보를 찾을수 없습니다.")
+            await message.channel.send(embed=errorembed)      
+            
 
     if message.content.startswith("!로얄픽"):
         dday = str(datetime.datetime(2019, 12, 30, 9, 59, 59)-datetime.datetime.now())
