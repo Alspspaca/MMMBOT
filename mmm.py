@@ -209,6 +209,7 @@ async def on_message(message):
             await message.channel.send("도움말")"""
     
     if message.content.startswith("!경뿌"):
+        await message.channel.send("test")
         request = requests.get('https://maple.gg/megaphone/croa')
         html = request.text
         soup = BeautifulSoup(html, 'html.parser')
