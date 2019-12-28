@@ -216,6 +216,25 @@ async def on_message(message):
         embed.add_field(name="길드 관련(미완)", value="!길드 - 길드 도움말을 출력한다.\n!길드 정보 - 길드 정보를 출력한다.\n", inline=False)
         embed.add_field(name="이벤트", value="!로얄픽 - 뷰티어워즈 정보를 가져와 출력한다.\n", inline=False)
         await author.send(embed=embed)
+   
+    if message.content.startswith("!경뿌"):
+        request = requests.get('https://maple.gg/megaphone/croa')
+        html = request.text
+        soup = BeautifulSoup(html, 'html.parser')
+        imf = soup.select('#app > section:nth-child(6) > div > div.col-lg-8.col-xl-9 > section > div > div')
+        count=0
+        embed = discord.Embed(color=0xFF5E00, title="경뿌 검색기")
+        for i in imf:
+            text = i.text.replace('\n', '').replace(' ', '')
+            if "경뿌" in text:
+                embed.add_field(name="Result :", value=text, inline=False)
+                count=1
+
+        if count == 0:
+            egb = discord.Embed(color=0xFF5E00, title="경뿌를 찾지 못했습니다.")
+            await message.channel.send(embed=egb)
+        else:
+            await message.channel.send(embed=embed)        
 
 acces_token = os.environ["BOT_TOKEN"]
 client.run(acces_token)
