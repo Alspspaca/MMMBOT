@@ -207,6 +207,7 @@ async def on_message(message):
 
         except:
             await message.channel.send("도움말")"""
+    
     if message.content.startswith("!경뿌"):
         request = requests.get('https://maple.gg/megaphone/croa')
         html = request.text
@@ -219,12 +220,11 @@ async def on_message(message):
             if "경뿌" in text:
                 embed.add_field(name="Result :", value=text, inline=False)
                 count=1
-
         if count == 0:
             egb = discord.Embed(color=0xFF5E00, title="경뿌를 찾지 못했습니다.")
             await message.channel.send(embed=egb)
         else:
-            await message.channel.send(embed=embed)     
+            await message.channel.send(embed=embed)    
     
     if message.content.startswith("!도움말"):
         author = message.guild.get_member(int(message.author.id))
